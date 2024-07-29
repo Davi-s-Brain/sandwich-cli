@@ -13,33 +13,16 @@ listaMolhos = ['Cebola Agridoce', 'Chipotle', 'Barbecue', 'Parmesão',
 # Escolher a quantidade que quer no molho, ou deixar padrão
 
 
-def remove_ingredientes(remove_ingredients: str):
-    todasAsLista = listaPaes + listaQueijos + listaVegetais + listaMolhos
-    print(todasAsLista, '\n')
-    itensRemover = ''
-
-    if (remove_ingredients == 'S'):
-        while remove_ingredients == 'S':
-            itensRemover = str(input('Escolha 1 ingrediente para remover:'))
-            contido = itensRemover in todasAsLista
-
-            if contido:
-                todasAsLista.remove(itensRemover)
-            else:
-                print("Este item não existe na lista")
-
-            os.system("cls")
-            os.system("clear")
-            print(todasAsLista)
-            remove_ingredients = str(input('Deseja remover mais um? (S/N)'))
-
-            if remove_ingredients == 'N':
-                break
-
-        return (os.system("cls"), os.system("clear"))
-
-    else:
-        return (os.system("cls"), os.system("clear"))
+def remove_ingredientes(ingredientes: dict):
+    for ingrediente in ingredientes.values():
+        if ingrediente in listaPaes:
+            listaPaes.remove(ingrediente)
+        if ingrediente in listaQueijos:
+            listaQueijos.remove(ingrediente)
+        if ingrediente in listaVegetais:
+            listaVegetais.remove(ingrediente)
+        if ingrediente in listaMolhos:
+            listaMolhos.remove(ingrediente)
 
 
 def escolhe_pao():
@@ -90,15 +73,3 @@ def escolhe_molhos(quantidade_molhos):
           listaMolhos.pop(index_lista)
 
     return molho
-
-
-# def monta_sanduba():
-#     escolhe_pao()
-#     escolhe_queijo()
-#     print('Recheio à vontade')
-#     escolhe_vegetais()
-#     escolhe_molhos()
-
-
-# remove_ingredientes()
-# monta_sanduba()

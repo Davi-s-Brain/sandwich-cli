@@ -1,6 +1,5 @@
 # Escolhe um sanduíche automáticamente
 
-import os
 from random import choice, randint
 
 listaPaes = ['3 Queijos', 'Parmesão E orégano', '9 grãos', 'Italiano Branco']
@@ -10,20 +9,19 @@ listaVegetais = ['Azeitonas', 'Picles', 'Pepinos', 'Pimentão', 'Alface',
 listaMolhos = ['Cebola Agridoce', 'Chipotle', 'Barbecue', 'Parmesão',
                'Maionese Temperada', 'Mostarda E Mel', 'Supreme']
 
-# Escolher a quantidade que quer no molho, ou deixar padrão
 
-
-def remove_ingredientes(ingredientes: dict):
-    for ingrediente in ingredientes.values():
-        if ingrediente in listaPaes:
-            listaPaes.remove(ingrediente)
-        if ingrediente in listaQueijos:
-            listaQueijos.remove(ingrediente)
-        if ingrediente in listaVegetais:
-            listaVegetais.remove(ingrediente)
-        if ingrediente in listaMolhos:
-            listaMolhos.remove(ingrediente)
-
+def remove_ingredientes(ingredientes):
+    global listaPaes, listaQueijos, listaVegetais, listaMolhos
+    items = ingredientes["Ingredientes"]
+    for ingredient in items:
+        while ingredient in listaPaes:
+            listaPaes.remove(ingredient)
+        while ingredient in listaQueijos:
+            listaQueijos.remove(ingredient)
+        while ingredient in listaVegetais:
+            listaVegetais.remove(ingredient)
+        while ingredient in listaMolhos:
+            listaMolhos.remove(ingredient)
 
 def escolhe_pao():
     pao = choice(listaPaes)
